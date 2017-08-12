@@ -1,0 +1,270 @@
+/* Standards */
+
+a { color: gray; 
+  text-decoration: none; }
+
+a:hover { color: black; }
+
+h1 {
+  font-family: 'Roboto Condensed';
+  font-size: 250%;
+}
+h2 {
+  font-family: 'Roboto Condensed';
+  margin-bottom: 0px;
+  text-transform: uppercase;
+  font-size: 120%;
+}
+
+
+
+h3 {
+  font-family: 'Roboto Condensed', monospace;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+a, p, span {
+  font-family: 'Lato', sans-serif;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  margin-top: 0px;
+}
+
+input[type=text], input[type=password] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  border-color: lightgray;
+  transition: border-color 0.2s
+}
+
+input[type=text]:hover, input[type=password]:hover {
+  border-color: gray;
+  transition: border-color 0.2s
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  box-shadow: 0px 0px 5px black;
+}
+
+input[type=submit] {
+    width: 50%;
+    background-color: #761834;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  transition: color 0.5s, background 0.2s;
+}
+
+input[type=submit]:hover {
+    background-color: #581227;
+    color: lightgray;
+}
+
+/* Classes */
+
+.gray {
+  color: gray;
+}
+
+.black {
+  color: black;
+}
+
+.red { color: #761834; }
+.darkred { color: #581227; }
+
+.msg {
+  clear: both;
+}
+
+.active {
+  float: right;
+  color: black;
+  background-color:rgba(211, 211, 211, 0.8);
+   border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* ID:s */
+
+#main {
+  width: 960px;
+  max-width: 960px;
+  margin: auto;
+  margin-top: 20px;
+  text-align: justify;
+}
+
+#top_banner {
+  font-size: 200%;
+  margin-top: 16px;
+  text-transform: none;
+}
+
+#menu {
+  height: 50px;
+  width: 100%;
+}
+
+#menu h1 {
+  display: inline;
+}
+
+#menu a {
+  font-family: 'Lato', sans-serif;
+  padding: 13px;
+  border-radius: 2px;
+  text-decoration: none;
+}
+
+#menu a:not(.active) {
+  display: inline;
+  float: right;
+  color: black;
+  transition: background 0.2s
+}
+
+#menu a:hover:not(.active) {
+  background: #f0f0f0;
+  transition: background 0.2s
+}
+
+#menu i {
+  font-size: 24px;
+  vertical-align: middle;
+  margin-right: 10px; 
+}
+
+#menu span:not(.logo) { 
+font-size: 80%;
+text-transform: uppercase; 
+margin-top: -4px;
+margin-bottom: 4px;
+  
+}
+    
+#info_feed { display: none; }
+#info_profile { display: none; }
+#info_inbox { display: none; }
+#info_events { display: none; }
+#info_friends { display: none; }
+#info_logout { display: none; }
+
+
+#menu_feed:hover ~ #info_feed {
+  display: block;
+}
+
+#menu_profile:hover ~ #info_profile {
+  display: block;
+}
+
+#menu_inbox:hover ~ #info_inbox {
+  display: block;
+}
+
+#menu_events:hover ~ #info_events {
+  display: block;
+}
+
+#menu_friends:hover ~ #info_friends {
+  display: block;
+}
+
+#menu_logout:hover ~ #info_logout {
+  display: block;
+}
+
+#content {
+  margin-top: -6px;
+  margin-bottom: -12px;
+  clear: both;
+}
+
+#feed {
+  margin-bottom: -20px;
+}
+#msg {
+  
+  margin-top: 12px;
+  margin-bottom: -40px;
+  overflow: hidden;
+  
+  #background: #f0f0f0;
+  #border-radius: 6px;
+  #padding: 6px;
+  #box-shadow: 0px 0px 3px #bdbdbd;
+  
+}
+
+#msg h3 { margin-top: 0px; margin-bottom: 12px;}
+#msg p{ margin-left: 8px;}
+#msg span{ margin-left: 8px;}
+
+#stamp {
+  color: gray;
+  font-family: 'Lato', sans-serif;  
+}
+
+#stamp a {
+  font-family: 'Lato', sans-serif;
+  text-decoration: none;
+  margin-left: 24px;
+  color: gray;
+}
+
+#stamp a:hover {
+  
+  color: black;
+}
+
+#events { overflow: hidden; margin-top: -12px;}
+
+#event { margin-top: -36px }
+
+#event h3 { margin-bottom: 12px; }
+
+#profile { margin-top: -24px;
+}
+
+#profile_wrapper {
+  margin-top: 24px;
+}
+
+#info p  {
+  clear: both;
+  margin-top: 12px;
+  width: 500px; }
+
+#contact p  {
+  clear: both;
+  margin-top: 12px;
+  width: 400px; }
+
+#info { float: left; }
+#contact { float: right; }
+#stamp { clear: both; }
+
+#msg #stamp { margin-top: 24px;
+}
+
+#event #stamp { margin-top: -48px }
+#events h2 { margin-top: 20px; }
+
+#info h2 { font-size: 120%;}

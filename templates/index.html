@@ -1,0 +1,125 @@
+{% load static %}
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed|Raleway" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+
+<script src="jquery-3.2.1.min.js"></script>
+<script src="{% static 'js/script_name.js' %}"></script>
+
+<div id="main">
+  <div id="menu">
+    <h1 id="logo"><span class="red logo">zic</span>Net</h1>
+    
+    <a  id="menu_logout" href="https://codepen.io/zicho/full/yoNmYX/" id="exit">
+    <i class="fa fa-external-link gray"></i>
+      Log Out</a>
+    
+    <a  id="menu_friends" href="default.asp">
+    <i class="fa fa-address-book gray"></i>Friends</a>
+    
+    <a  id="menu_events" href="default.asp">
+    <i class="fa fa-calendar gray"></i>Events</a>
+    
+    <a  id="menu_inbox" href="default.asp">
+    <i class="fa fa-envelope-o gray"></i>Inbox</a>
+    
+    <a  id="menu_profile" href="default.asp">
+    <i class="fa fa-male gray"></i>Profile</a>
+    
+    <a id="menu_feed" href="default.asp">
+    <i class="fa fa-list gray"></i>Feed</a>
+    
+    <hr style="clear: both;">
+
+        <span id="info_feed" style="float: left;">View latest <span class="red" style="font-size: 100%">feed</span> entries</span>
+    
+    <span id="info_profile" style="float: left;">View your <span class="red" style="font-size: 100%">profile</span></span>
+    
+    <span id="info_inbox" style="float: left;">View your <span class="red" style="font-size: 100%">messages</span></span>
+    
+    <span id="info_events" style="float: left;">View upcoming <span class="red" style="font-size: 100%">events</span></span>
+    
+    <span id="info_friends" style="float: left;">View <span class="red" style="font-size: 100%">friend</span> list</span>
+    
+    <span id="info_logout" style="float: left;">Leave this place</span>
+    
+    <span style="float: right;">Logged in as: <span class="red" style="font-size: 100%">Zicho</span></span>
+   
+  </div>
+  <!- MENU ENDS HERE -->
+  
+  <hr style="clear: both;">
+  
+  <div id="content">
+    <div id="welcome">
+      <h2 id="top_banner">Welcome!</h2>
+      <p>This is a mockup design of a planned social platform . It is mainly designed to be a platform used for a small amount of people (e.g. a group of friends) to help organize contact and planning. The idea is that people in your friend list can post
+        to a shared feed, and that all friends of the poster can see and comment the messages added to the feed. </p>
+    </div>
+    <!- WELCOME ENDS HERE -!>
+    <div id="feed">
+      <h2 class="red">Latest entry from feed</h2>
+      <div id="msg">
+        <h3>zicho wrote:</h3>
+        <p>Integer accumsan sem a ullamcorper egestas. Pellentesque pellentesque cursus diam, et ullamcorper orci sollicitudin vel. Nulla gravida sed urna sit amet luctus. Pellentesque non diam ullamcorper metus blandit posuer.</p>
+
+          <div id="stamp">
+
+            
+             <span style="float: left; ">
+               Posted on: 26-07-2017 15:11</span>
+
+             <span style="float: right;">
+           
+              <a href="default.asp">View post</a>
+              <a href="default.asp">Comment post</a>
+              <a href="default.asp">Message user</a>
+              <a href="default.asp">Go to user profile</a>
+               </></span>
+          </div><!- STAMP ENDS HERE -!>
+      </div>
+      <!- MSG ENDS HERE -!>
+
+    </div>
+    <!- FEED ENDS HERE -!>
+    <br><br><br>
+<hr>
+    <div id="events">
+
+      <h2 class="red">Latest event</h2>
+      <div id="event">
+            <br><br>
+             <span style="float: left;">
+               <h3>Party!</h3></span>
+
+             <span style="float: right;">
+            <h3 class="gray">
+              Date: 05 / 08 / 2017, 19:00
+            </h3></span>
+        <p style="clear: both">A party is a gathering of people who have been invited by a host for the purposes of socializing, conversation, recreation, or as part of a festival or other commemoration of a special occasion. A party will typically feature food and beverages, and often music and dancing or other forms of entertainment. In many Western countries, parties for teens and adults are associated with drinking alcohol such as beer, wine or distilled spirits.</p>
+        
+                  <div id="stamp">
+
+            <br><br>
+             <span style="float: left;">
+               <p>Created 26-07-2017 15:11 by <span class="black">zicho</span></p></span>
+
+             <span style="float: right;">
+            <p>
+              <a href="default.asp">View event</a>
+              <a href="default.asp">Comment event</a>
+              <a href="default.asp">Message user</a>
+              <a href="default.asp">Go to user profile</a>
+               </p></span>
+          </div><!- STAMP ENDS HERE -!>
+        
+          </div><!- SPECIFIC EVENT END HERE -!>
+      </div><!- EVENTS END HERE -!>
+</div>
+<!- CONTENT ENDS HERE -!>
+</div>
+<!- MAIN ENDS HERE -!>
