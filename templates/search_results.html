@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>Search</title>
+
+<body>
+
+<p>Ya serched foh: <strong>{{ query }}</strong></p>
+
+{% if entries %}
+
+<p>Found {{ entries|length }}
+entr{{ entries|pluralize:"y,ies" }}.</p>
+</p>
+
+<ul>
+{% for entry in entries %}
+<li>{{ entry.author }} wrote: {{ entry.body }}</li>
+{% endfor %}
+</ul>
+
+{% else %}
+<p>Ya did not find a thing lol kek xD lalala</p>
+{% endif %}
+
+</body>
+</html>

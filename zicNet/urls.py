@@ -22,4 +22,5 @@ urlpatterns = [
 	url(r'^$', index),
 	url(r'^feed/', feed),
 	url(r'^profile/', profile),
+        url(r'^search/', search),
 ]

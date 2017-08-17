@@ -26,7 +26,7 @@ SECRET_KEY = '027y-lfg6j3b0zqpvak&#7c7x8467_1*8y4)23)^p&nq25n*8m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.10.157']
+ALLOWED_HOSTS = ['192.168.10.157', 'zicho.dlinkddns.com']
 
 
 # Application definition
@@ -111,13 +111,14 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
+
+TIME_ZONE = 'CET'
 
 
 # Static files (CSS, JavaScript, Images)

@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Search</title>
+
+<body>
+<form action="" method="get">
+<input type="text" name="q">
+<input type="submit" value="Go!">
+</form>
+
+{% if errors %}
+{% for error in errors %}
+{% autoescape off %}
+<p>{{ error }}</p>
+{% endautoescape %}
+{% endfor %}
+{% endif %}
+
+
+{% if entries %}
+
+<p>You searched for: <strong>{{ query }}</strong></p>
+<p>Found {{ entries|length }}
+entr{{ entries|pluralize:"y,ies" }}.</p>
+</p>
+
+<ul>
+
+{% for entry in entries %}
+
+<li>{{ entry.author }} wrote: {{ entry.body }}</li>
+
+{% endfor %}
+</ul>
+
+{% endif %}
+
+{% if entries|length == 0 and query|length > 0 and not errors %}
+
+<p>Your search for <strong>{{ query }}</strong> did not return any results.</p>
+
+{% endif %}
+
+</body>
+</html>

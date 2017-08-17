@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block scripts %}
+<script type="text/javascript" src="{% static 'js/menuHighLight.js' %}"></script>
+{% endblock %}
+
+{% block content %}    
+
+    <div id="welcome">
+      <h2 id="top_banner" style="margin-bottom: -60px;">Viewing personal feed</h2>
+      
+    </div>
+    <!- WELCOME ENDS HERE -!>
+
+   <div id="feed">
+<br>
+      <div id="msg" class="msg_border">
+	  
+        <h3>zicho wrote:</h3>
+        <p>Integer accumsan sem a ullamcorper egestas. Pellentesque pellentesque cursus diam, et ullamcorper orci sollicitudin vel. Nulla gravida sed urna sit amet luctus. Pellentesque non diam ullamcorper metus blandit posuer.</p>
+
+          <div id="stamp">
+
+            
+             <span style="float: left; ">
+               Posted on: 26-07-2017 15:11</span>
+
+             <span style="float: right;">
+           
+              <a href="default.asp">View post</a>
+              <a href="default.asp">Comment post</a>
+              <a href="default.asp">Message user</a>
+              <a href="default.asp">Go to user profile</a>
+               </></span>
+          </div><!- STAMP ENDS HERE -!>
+      </div>
+      <!- MSG ENDS HERE -!>
+
+      <div id="msg" class="msg_border">
+
+        <h3>zicho wrote:</h3>
+        <p>Integer accumsan sem a ullamcorper egestas. Pellentesque pellentesque cursus diam, et ullamcorper orci sollicitudin vel. Nulla gravida sed urna sit amet luctus. Pellentesque non diam ullamcorper metus blandit posuer.</p>
+
+          <div id="stamp">
+
+
+             <span style="float: left; ">
+               Posted on: 26-07-2017 15:11</span>
+
+             <span style="float: right;">
+
+              <a href="default.asp">View post</a>
+              <a href="default.asp">Comment post</a>
+              <a href="default.asp">Message user</a>
+              <a href="default.asp">Go to user profile</a>
+               </></span>
+          </div><!- STAMP ENDS HERE -!>
+      </div>
+      <!- MSG ENDS HERE -!>
+
+    </div><!- FEED ENDS HERE -!>
+
+<div id = "feed_entry"> 
+<form action="/feed/" method="post">
+<h2 class="red">Write a new feed entry</h2>
+<div id="feed_entry_input">
+  <textarea type="text" name="body" id="body" cols="40" rows="8" placeholder="Write your message here!" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Write your message here!'" required class='textfield'></textarea>
+  </div>
+  <div id="feed_entry_submit">
+<button class="btn" title="A message is required to post" input type="submit" class='button'>POST</button>
+  </div>
+</form>
+</div> <!- FEED ENTRY ENDS HERE -!>
+
+{% endblock %}
