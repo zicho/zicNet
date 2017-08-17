@@ -7,7 +7,7 @@ from users import models as users
 # Create your models here.
 
 class Feed_entry(models.Model):
-    body = models.CharField(max_length=140)
+    body = models.TextField()
     author = models.ForeignKey(users.User)
     publish_date = models.DateField(default = timezone.now)
 	
