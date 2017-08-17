@@ -57,7 +57,6 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
 	os.path.join(BASE_DIR, 'templates'),
-	'/var/www/datareaktor/templates'
 	],
         'APP_DIRS': True,
         'OPTIONS': {

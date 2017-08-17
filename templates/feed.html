@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block scripts %}
+<script type="text/javascript" src="{% static 'js/menuHighLight.js' %}"></script>
+{% endblock %}
+
+{% block content %}    
+
+    <div id="welcome">
+      <h2 id="top_banner">Viewing personal feed</h2>
+      
+    </div>
+    <!- WELCOME ENDS HERE -!>
+
+   <div id="feed">
+
+      <div id="msg">
+        <h3>zicho wrote:</h3>
+        <p>Integer accumsan sem a ullamcorper egestas. Pellentesque pellentesque cursus diam, et ullamcorper orci sollicitudin vel. Nulla gravida sed urna sit amet luctus. Pellentesque non diam ullamcorper metus blandit posuer.</p>
+
+          <div id="stamp">
+
+            
+             <span style="float: left; ">
+               Posted on: 26-07-2017 15:11</span>
+
+             <span style="float: right;">
+           
+              <a href="default.asp">View post</a>
+              <a href="default.asp">Comment post</a>
+              <a href="default.asp">Message user</a>
+              <a href="default.asp">Go to user profile</a>
+               </></span>
+          </div><!- STAMP ENDS HERE -!>
+      </div>
+      <!- MSG ENDS HERE -!>
+
+    </div><!- FEED ENDS HERE -!>
+
+{% endblock %}

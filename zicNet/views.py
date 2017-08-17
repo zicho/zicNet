@@ -7,6 +7,13 @@ from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
 
 def index(request):
-    t = get_template('index.html')
-    html = t.render()
-    return HttpResponse(html)
+ 
+    return render(request, 'index.html')
+	
+def feed(request):
+ 
+    return render(request, 'feed.html')	
+
+def profile(request):
+ 
+    return render(request, 'profile.html')	

@@ -1,60 +1,6 @@
-{% load static %}
+{% extends "base.html" %}
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed|Raleway" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-</head>
-
-<script src="jquery-3.2.1.min.js"></script>
-<script src="{% static 'js/script_name.js' %}"></script>
-
-<div id="main">
-  <div id="menu">
-    <h1 id="logo"><span class="red logo">zic</span>Net</h1>
-    
-    <a  id="menu_logout" href="https://codepen.io/zicho/full/yoNmYX/" id="exit">
-    <i class="fa fa-external-link gray"></i>
-      Log Out</a>
-    
-    <a  id="menu_friends" href="default.asp">
-    <i class="fa fa-address-book gray"></i>Friends</a>
-    
-    <a  id="menu_events" href="default.asp">
-    <i class="fa fa-calendar gray"></i>Events</a>
-    
-    <a  id="menu_inbox" href="default.asp">
-    <i class="fa fa-envelope-o gray"></i>Inbox</a>
-    
-    <a  id="menu_profile" href="default.asp">
-    <i class="fa fa-male gray"></i>Profile</a>
-    
-    <a id="menu_feed" href="default.asp">
-    <i class="fa fa-list gray"></i>Feed</a>
-    
-    <hr style="clear: both;">
-
-        <span id="info_feed" style="float: left;">View latest <span class="red" style="font-size: 100%">feed</span> entries</span>
-    
-    <span id="info_profile" style="float: left;">View your <span class="red" style="font-size: 100%">profile</span></span>
-    
-    <span id="info_inbox" style="float: left;">View your <span class="red" style="font-size: 100%">messages</span></span>
-    
-    <span id="info_events" style="float: left;">View upcoming <span class="red" style="font-size: 100%">events</span></span>
-    
-    <span id="info_friends" style="float: left;">View <span class="red" style="font-size: 100%">friend</span> list</span>
-    
-    <span id="info_logout" style="float: left;">Leave this place</span>
-    
-    <span style="float: right;">Logged in as: <span class="red" style="font-size: 100%">Zicho</span></span>
-   
-  </div>
-  <!- MENU ENDS HERE -->
-  
-  <hr style="clear: both;">
-  
-  <div id="content">
+{% block content %}    
     <div id="welcome">
       <h2 id="top_banner">Welcome!</h2>
       <p>This is a mockup design of a planned social platform . It is mainly designed to be a platform used for a small amount of people (e.g. a group of friends) to help organize contact and planning. The idea is that people in your friend list can post
@@ -119,7 +65,4 @@
         
           </div><!- SPECIFIC EVENT END HERE -!>
       </div><!- EVENTS END HERE -!>
-</div>
-<!- CONTENT ENDS HERE -!>
-</div>
-<!- MAIN ENDS HERE -!>
+{% endblock %}	  

@@ -1,9 +1,11 @@
 /* Standards */
 
-a { color: gray; 
+a) { color: gray; 
   text-decoration: none; }
 
 a:hover { color: black; }
+
+
 
 h1 {
   font-family: 'Roboto Condensed';
@@ -96,12 +98,15 @@ input[type=submit]:hover {
 .active {
   float: right;
   color: black;
-  background-color:rgba(211, 211, 211, 0.8);
+  background-color:#f0f0f0;
    border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
 /* ID:s */
+
+#logo {color: black;
+text-decoration: none; }
 
 #main {
   width: 960px;
@@ -126,21 +131,21 @@ input[type=submit]:hover {
   display: inline;
 }
 
-#menu a {
+#menu a:not(#logo) {
   font-family: 'Lato', sans-serif;
   padding: 13px;
   border-radius: 2px;
   text-decoration: none;
 }
 
-#menu a:not(.active) {
+#menu a:not(.active):not(#logo) {
   display: inline;
   float: right;
   color: black;
   transition: background 0.2s
 }
 
-#menu a:hover:not(.active) {
+#menu a:hover:not(.active):not(#logo) {
   background: #f0f0f0;
   transition: background 0.2s
 }

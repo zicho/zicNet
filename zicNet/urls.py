@@ -20,4 +20,6 @@ from zicNet.views import *
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 	url(r'^$', index),
+	url(r'^feed/', feed),
+	url(r'^profile/', profile),
 ]
