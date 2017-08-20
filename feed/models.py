@@ -8,6 +8,7 @@ from django.template.defaultfilters import truncatewords
 # Create your models here.
 
 class Feed_entry(models.Model):
+<<<<<<< HEAD
     
 
     body = models.TextField()
@@ -21,6 +22,11 @@ class Feed_entry(models.Model):
     def __str__(self):
    
 	    return u'%s' % (self.author)
+=======
+    body = models.TextField()
+    author = models.ForeignKey(users.User)
+    publish_date = models.DateField(default = timezone.now)
+>>>>>>> 076d7e50dd2c996a3e670abd34afa6fc54aaf74f
 	
     class Meta:
        ordering = ['-publish_date']

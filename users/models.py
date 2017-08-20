@@ -11,6 +11,7 @@ class User(models.Model):
     email = models.EmailField(blank = True, verbose_name = "E-Mail")
     moderator = models.BooleanField(default=False)
 	
+<<<<<<< HEAD
     created_on = models.DateTimeField(default = timezone.now)
 	
     def __str__(self):
@@ -19,6 +20,16 @@ class User(models.Model):
             return u'%s (MOD)' % (self.username)
         else:
 		    return u'%s' % (self.username)
+=======
+    created_on = models.DateField(default = timezone.now)
+>>>>>>> 076d7e50dd2c996a3e670abd34afa6fc54aaf74f
+	
+    def __str__(self):
+    
+        if self.moderator == True:
+            return u'%s (ID: %s) MODERATOR' % (self.username, self.id)
+        else:
+		    return u'%s (ID: %s)' % (self.username, self.id)
 	
     class Meta:
        ordering = ['created_on']
