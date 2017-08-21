@@ -7,7 +7,9 @@ from datetime import datetime
 
 def index(request):
  
-    return render(request, 'index.html')
+    entry =  Feed_entry.objects.latest('publish_date')
+ 
+    return render(request, 'index.html', {'entry' : entry})
     
 def feed(request):
  

@@ -206,23 +206,26 @@ margin-bottom: 4px;
 #content {
   margin-top: -6px;
   margin-bottom: -12px;
-  clear: both;
 }
 
 #feed {
   margin-bottom: -20px;
 }
 
+#feed_banner { position: relative; }
+
+#feed_error { position: absolute;
+right: 0; }
+
+#feed_empty { margin-top: 90px; }
+
 #feed_entry { clear: both;
-margin-top: 60px;
-margin-bottom: -60px; }
+margin-bottom: -80px; }
 
 #feed_entry .btn { width: 100%; }
-#feed_entry .textfield { width: 100%;margin-top:20px; }
+#feed_entry .textfield { width: 100%; margin-top: 24px;}
 
 #msg {
-  
-  margin-top: 16px;
   overflow: hidden;
   margin-bottom: -40px;
   margin-top: 60px;
@@ -258,12 +261,6 @@ margin-bottom: -60px; }
 
 #event h3 { margin-bottom: 12px; }
 
-#profile { margin-top: -24px;
-}
-
-#profile_wrapper {
-  margin-top: 24px;
-}
 
 #info p  {
   clear: both;

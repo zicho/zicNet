@@ -8,36 +8,43 @@
 {% block content %}    
 
     <div id="welcome">
-      <h2 id="top_banner" style="margin-bottom: -60px;">Viewing personal feed</h2>
-      
-    </div>
+      <h2 id="top_banner">Viewing feed</h2>
+</div>
     <!- WELCOME ENDS HERE -!>
 
+	<div id="feed_banner">
+	<div id="feed_title">
+	<h2 class="red" style="float: left">Submit a new feed entry</h2>
+	</div>
+	{% if form.errors %}
+	<div id="feed_error">{# error message gets inserted here #}
+	<script>feed_error_fade();</script>
+	</div>
+	{% endif %}
+	<div>
+	
 	<div id = "feed_entry"> 
 <form action="/feed/" method="post">
-<h2 class="red" style="margin-top: 70px">Write a new feed entry</h2>
+
 
 <div id="feed_entry_input">
   {{ form.as_table }}
   </div>
   <div id="feed_entry_submit">
   {% csrf_token %}
-<button class="btn" title="A message is required to post" input type="submit" class='button'>POST</button>
+<button id="feed_entry_submit_btn" class="btn" title="A message is required to post" input type="submit" class='button'>POST</button>
   </div>
 </form>
 
-{% if form.errors %}
-<p style = "margin-bottom: 0px;" class="red">You cannot submit an empty message.</p>
-{% endif %}
-
 </div> <!- FEED ENTRY ENDS HERE -!>
 	
-   <div id="feed">
+<div id="feed">
 <br>
+
 {% for entry in entries %}
       <div id="msg" class="msg_border">
 	  
-        <h3>{{ entry.author }} wrote:</h3>
+        <h3>{{ entry.author.username }} wrote:</h3>
         <p>{{ entry.body }}</p>
 
           <div id="stamp">
@@ -56,7 +63,12 @@
           </div><!- STAMP ENDS HERE -!>
       </div>
       <!- MSG ENDS HERE -!>
+{% empty %}	  
+
+<div id="feed_empty" style="margin-top: 90px">
+<center><h3>No feed entries yet :(</h3></center>
+</div>
+	  
 {% endfor %}
     </div><!- FEED ENDS HERE -!>
-
 {% endblock %}

@@ -10,14 +10,14 @@
     <div id="feed">
       <h2 class="red" style="margin-bottom: -50px;">Latest entry from feed</h2>
       <div id="msg">
-        <h3>zicho wrote:</h3>
-        <p>Integer accumsan sem a ullamcorper egestas. Pellentesque pellentesque cursus diam, et ullamcorper orci sollicitudin vel. Nulla gravida sed urna sit amet luctus. Pellentesque non diam ullamcorper metus blandit posuer.</p>
+        <h3>{{ entry.author.username }} wrote:</h3>
+        <p>{{ entry.body }}</p>
 
           <div id="stamp">
 
             
              <span style="float: left; ">
-               Posted on: 26-07-2017 15:11</span>
+               Posted on: {{ entry.publish_date }}</span>
 
              <span style="float: right;">
            
