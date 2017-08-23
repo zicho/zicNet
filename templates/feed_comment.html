@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block scripts %}
+<script type="text/javascript" src="{% static 'js/menuHighLight.js' %}"></script>
+{% endblock %}
+
+{% block content %}    
+
+    <div id="welcome" style="margin-bottom: -140px">
+      <h2 id="top_banner">Viewing feed entry</h2>
+</div>
+    <!- WELCOME ENDS HERE -!>
+	
+	<div id = "feed_entry"> 
+
+<div id="feed">
+<br>
+
+      <div id="comment" style="top-margin: -200px">
+	  
+        <h3>{{ entry.author.username }} wrote:</h3>
+        <p>{{ entry.body }}</p>
+
+          <div id="stamp">
+
+            
+             <span style="float: left; ">
+               Posted on: {{ entry.publish_date }}</span>
+
+             <span style="float: right;">
+           
+              <a href="default.asp">Message user</a>
+              <a href="default.asp">Go to user profile</a>
+               </></span>
+          </div><!- STAMP ENDS HERE -!>
+      </div>
+      <!- MSG ENDS HERE -!>
+	  
+
+	  
+<form method="POST" action={% url 'comment_feed' id=entry.id %}>
+  {{ form.as_table }}
+  </div>
+  <div id="comment_submit"  style="margin-bottom: 80px">
+  {% csrf_token %}
+{# <a href={% url 'comment_feed' id=entry.id %}> #}
+<button id="comment_submit_btn" class="btn" title="A comment is required to post" input type="submit" class='button'>POST</button>
+{# </a> #}
+</form>
+
+</div>
+
+</div><!- FEED ENDS HERE -!>
+
+<div id="comments">
+
+{% for comment in comments %}
+
+<div id="comment" class="msg_border" style="margin-top: 80px; margin-bottom: -60px">
+<p style="margin-bottom: -20px; margin-top: 0px"><strong>{{ comment.author.username }}</strong></p><br>
+<p style="margin-bottom: -20px">{{ comment.body }}</p><br>
+<p class="gray" style="margin-bottom: 0px">{{ comment.publish_date }}</p>
+
+</div>
+
+{% empty %}
+<div style="margin-top: 120px">
+<center><h2>No comments yet!</h2></center>
+</div>
+{% endfor %}
+
+</div>
+<!-COMMENTS END HERE -!> 
+	
+{% endblock %}

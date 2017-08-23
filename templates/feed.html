@@ -12,7 +12,7 @@
 </div>
     <!- WELCOME ENDS HERE -!>
 
-	<div id="feed_banner">
+<div id="feed_banner">
 	<div id="feed_title">
 	<h2 class="red" style="float: left">Submit a new feed entry</h2>
 	</div>
@@ -20,21 +20,21 @@
 	<div id="feed_error">{# error message gets inserted here #}
 	<script>feed_error_fade();</script>
 	</div>
-	{% endif %}
-	<div>
+{% endif %}
 	
 	<div id = "feed_entry"> 
 <form action="/feed/" method="post">
 
 
 <div id="feed_entry_input">
+<form action="/feed" method ="POST">  
   {{ form.as_table }}
   </div>
   <div id="feed_entry_submit">
   {% csrf_token %}
 <button id="feed_entry_submit_btn" class="btn" title="A message is required to post" input type="submit" class='button'>POST</button>
-  </div>
 </form>
+</div>
 
 </div> <!- FEED ENTRY ENDS HERE -!>
 	
@@ -55,8 +55,8 @@
 
              <span style="float: right;">
            
-              <a href="default.asp">View post</a>
-              <a href="default.asp">Comment post</a>
+              <a href="/feed/{{ entry.id }}">View post</a>
+              <a href="default.asp">Comment post {% if entry.comments.count != 0 %}({{ entry.comments.count }}){% endif %}</a>
               <a href="default.asp">Message user</a>
               <a href="default.asp">Go to user profile</a>
                </></span>

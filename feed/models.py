@@ -10,7 +10,7 @@ from django.template.defaultfilters import truncatewords
 class Feed_entry(models.Model):
 
     body = models.TextField()
-    author = models.ForeignKey(users.User, default=4)
+    author = models.ForeignKey(users.User, default=1)
     publish_date = models.DateTimeField(default = timezone.now)
 	
     @property
@@ -19,9 +19,26 @@ class Feed_entry(models.Model):
 	
     def __str__(self):
    
-	    return u'%s' % (self.author)
+	    return truncatewords(self.body, 1)
 	
     class Meta:
        ordering = ['-publish_date']
        verbose_name = "Feed Entry"
        verbose_name_plural = "Feed Entries"
+
+class Comment(models.Model):
+    belongs_to = models.ForeignKey(Feed_entry, related_name='comments')
+    author = models.ForeignKey(users.User, related_name='author', default=1)
+    body = models.TextField()
+    publish_date = models.DateTimeField(default = timezone.now)
+    
+    @property
+    def content(self):
+        return truncatewords(self.body, 10)
+		
+    def __unicode__(self):
+	
+        return self.body
+	
+    class Meta:
+       ordering = ['-publish_date']

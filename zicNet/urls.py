@@ -20,7 +20,8 @@ from zicNet.views import *
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 	url(r'^$', index),
-	url(r'^feed/', feed),
+	url(r'^feed/$', feed),
+	url(r'^feed/(?P<id>[0-9]+)/$', comment_feed, name='comment_feed'),
 	url(r'^profile/', profile),
-        url(r'^search/', search),
+    url(r'^search/', search),
 ]

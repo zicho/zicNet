@@ -24,4 +24,15 @@ class User(models.Model):
     class Meta:
        ordering = ['created_on']
 	   
+class User_profile(models.Model):
+    
+    owner = models.ForeignKey(User, default=1)
+    info = models.TextField(max_length=210, blank = True)
+    
+	
+    created_on = models.DateTimeField(default = timezone.now)
+	
+    class Meta:
+       ordering = ['owner']
+	   
 	   
