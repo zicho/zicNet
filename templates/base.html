@@ -24,7 +24,7 @@
   <div id="menu">
     <h1><a id="logo" href="/"><span class="red logo">zic</span>Net</h1></a>
     
-    <a  id="menu_logout" id="exit">
+    <a id="menu_logout" id="exit" href="/logout">
     <i class="fa fa-external-link gray"></i>
       Log Out</a>
     
@@ -57,7 +57,7 @@
     
     <span id="info_logout" style="float: left;">Leave this place</span>
     
-    <span style="float: right;">Logged in as: <span class="red" style="font-size: 100%">Zicho</span></span>
+    <span style="float: right;">Logged in as: <span class="red" style="font-size: 100%">{{ user.get_username }}</span></span>
    
   </div>
   <!- MENU ENDS HERE -!>

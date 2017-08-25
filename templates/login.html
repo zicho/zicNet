@@ -1,0 +1,53 @@
+{% load staticfiles %}
+
+<html>
+<body>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed|Raleway" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'js/fade_effects.js' %}"></script>
+
+<div id="main">
+<center>
+  <div id="login">
+    
+    <h1 style="font-size: 600%"><span class="red">zic</span>Net</h1>
+      <p style="margin-top: -48px">Welcome to <span class="red">zic</span>Net.<br>To enter, input user credentials below.
+        
+        <div id="login_form">
+          
+<form action="/login/" method ="POST">  
+    <label for="username"><p  style="margin-bottom: 2px">Username</p></label>
+    <input type="text" id="username" name="username">
+
+    <label for="password"><p style="margin-bottom: 2px">Password</p></label>
+    <input type="password" id="password" name="password">
+  <br><br>
+  {% csrf_token %}
+          <input id="login_btn" class="btn" type="submit" value="ENTER">
+</form>
+
+</div><!- FORM ENDS HERE -!>
+    
+      </div><!- LOGIN ENDS HERE -!>
+       
+
+  
+    <div style="position: absolute; left: 50%;">
+    <div id="error" style="position: relative; left: -50%;">
+    </div>
+  </div>
+  
+  
+  
+  <br><br><br>
+  <div style="position: relative; margin: auto"><a class="fadein" href="default.asp">Not a member? Request account here.</a></div>
+
+</body>
+</html>

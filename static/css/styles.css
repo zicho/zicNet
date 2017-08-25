@@ -9,12 +9,11 @@ a { color: gray;
 
 a:hover { color: black; }
 
-
-
 h1 {
   font-family: 'Roboto Condensed';
   font-size: 250%;
 }
+
 h2 {
   font-family: 'Roboto Condensed';
   margin-bottom: -8px;
@@ -44,6 +43,31 @@ hr {
   margin-top: 0px;
 }
 
+ul.errorlist {display:none;}
+
+input[type=text], input[type=password] {
+    width: 40%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  border-color: lightgray;
+  transition: border-color 0.2s;
+  transition: box-shadow 0.2s;
+}
+
+input[type=text]:hover, input[type=password]:hover {
+  border-color: gray;
+  transition: border-color 0.2s
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  box-shadow: 0px 0px 5px lightgray;
+  
+}
+
 /* Classes */
 
 .gray {
@@ -57,10 +81,11 @@ hr {
 .red { color: #761834; }
 .darkred { color: #581227; }
 
-
+.green { color: #51bf3d }
 
 .msg {
   clear: both;
+  white-space: normal;
 }
 
 .msg_border {
@@ -114,9 +139,19 @@ hr {
     color: lightgray;
 }
 
-ul.errorlist {display:none;}
+.hide { display: none; }
+.unhide { display: block; }
 
 /* ID:s */
+
+#login_btn { width: 40%; } 
+
+#counter {
+  font-family: 'Roboto Condensed';
+  margin-bottom: -8px;
+  text-transform: uppercase;
+}
+
 
 #logo {color: black;
 text-decoration: none; }
@@ -226,10 +261,12 @@ right: 0; }
 #feed_empty { margin-top: 90px; }
 
 #feed_entry { clear: both;
-margin-bottom: -80px; }
+margin-bottom: -80px;
+white-space: normal;
+}
 
 #feed_entry .btn { width: 100%; }
-#feed_entry .textfield { width: 100%; margin-top: 24px;}
+#feed_entry .textfield { width:100%; margin-top: 24px;}
 
 #comment {
   overflow: hidden;

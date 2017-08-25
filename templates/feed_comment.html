@@ -14,18 +14,39 @@
 	
 	<div id = "feed_entry"> 
 
-<div id="feed">
 <br>
 
-      <div id="comment" style="top-margin: -200px">
-	  
-        <h3>{{ entry.author.username }} wrote:</h3>
-        <p>{{ entry.body }}</p>
+      <div id="comment">
+	    
+		<div id="feed_banner">
+	    <div id="feed_title">
+        <h3 >{{ entry.author.username }} wrote:</h3>
+		</div>
+		{% if form.errors %}
+		<div id="comment_error" style="float: right; margin-top: -50px;">
+	    
+		{# error message gets inserted here #}
+	    <script>comment_error_fade();</script>
+		</div>
+		{% endif %}
+		
+		<!-- 
+		{% if not form.errors %}
+		<div id="comment_error" style="float: right; margin-top: -50px;">
+	    
+		{# success message gets inserted here #}
+	    <script>comment_success_fade();</script>
+		{% endif %} -->
+		
+		
+			</div>
+		
+        <p style="clear: both;">{{ entry.body|linebreaks }}</p>
 
-          <div id="stamp">
+          <div id="stamp" style="margin-bottom: 0px;">
 
             
-             <span style="float: left; ">
+             <span style="float: left; margin-bottom: 40px">
                Posted on: {{ entry.publish_date }}</span>
 
              <span style="float: right;">
@@ -35,18 +56,19 @@
                </></span>
           </div><!- STAMP ENDS HERE -!>
       </div>
+	  
       <!- MSG ENDS HERE -!>
 	  
 
-	  
+<div id="comment_submit">	  
 <form method="POST" action={% url 'comment_feed' id=entry.id %}>
+  
+  
   {{ form.as_table }}
-  </div>
-  <div id="comment_submit"  style="margin-bottom: 80px">
+  
   {% csrf_token %}
-{# <a href={% url 'comment_feed' id=entry.id %}> #}
+
 <button id="comment_submit_btn" class="btn" title="A comment is required to post" input type="submit" class='button'>POST</button>
-{# </a> #}
 </form>
 
 </div>
@@ -58,18 +80,19 @@
 {% for comment in comments %}
 
 <div id="comment" class="msg_border" style="margin-top: 80px; margin-bottom: -60px">
-<p style="margin-bottom: -20px; margin-top: 0px"><strong>{{ comment.author.username }}</strong></p><br>
-<p style="margin-bottom: -20px">{{ comment.body }}</p><br>
-<p class="gray" style="margin-bottom: 0px">{{ comment.publish_date }}</p>
+<p style="margin: 0px 0px -20px 0px;"><strong>{{ comment.author.username }}:</strong></p><br>
+<p style="margin: 0px">{{ comment.body|linebreaks  }}</p><br>
+<p class="gray" style="margin: -20px 0px 0px 0px;">{{ comment.publish_date }}</p>
 
 </div>
+
 
 {% empty %}
 <div style="margin-top: 120px">
 <center><h2>No comments yet!</h2></center>
 </div>
 {% endfor %}
-
+<br><br><br><br><br>
 </div>
 <!-COMMENTS END HERE -!> 
 	

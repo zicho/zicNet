@@ -8,7 +8,7 @@
 {% block content %}    
 
 <div id="welcome">
-      <h2 id="top_banner">Viewing profile of zicho</h2>
+      <h2 id="top_banner">Viewing profile of {{ user.get_username }}</h2>
 </div>
     <!- WELCOME ENDS HERE -!>
     <div id="profile">
@@ -17,14 +17,18 @@
         <div id="info">
           <h2 class="red">Info</h2>
         <p>
-          Here you can add information about yourself which is interesting or maybe not that interesting but anyway you can put it here and then maybe another user will read it but maybe not but still it's cool that you can write it here so that someone can read it maybe or not read it I don't know.
+		  {% if user_profile.info %}
+          {{ user.user_profile.info }}
+		  {% else %}
+		  <span class="gray">There is no profile info available on this user.</span>
+		  {% endif %}
           </p>
         </div>
         
         <div id="contact">
       <h2 class="red">Contact</h2>
         <p>
-          Email: <span style="float: right">zicho@zicnet.com</span><br>
+          Email: <span style="float: right">{% if user.email %} {{ user.email }} {% else %} <span class="gray">N/A</span> {% endif %}</span><br>
           XMPP/Jabber:<span style="float: right">zicho@draugr.de</span><br>
           reddit:<span style="float: right">zicho</span>
           </p></div><!- CONTACT ENDS HERE -!>

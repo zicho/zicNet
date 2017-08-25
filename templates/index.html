@@ -7,9 +7,11 @@
         to a shared feed, and that all friends of the poster can see and comment the messages added to the feed. </p>
     </div>
     <!- WELCOME ENDS HERE -!>
-    <div id="feed">
+    {% if entry %}
+	<div id="feed">
       <h2 class="red" style="margin-bottom: -50px;">Latest entry from feed</h2>
       <div id="msg">
+	  
         <h3>{{ entry.author.username }} wrote:</h3>
         <p>{{ entry.body }}</p>
 
@@ -26,8 +28,13 @@
               <a href="default.asp">Message user</a>
               <a href="default.asp">Go to user profile</a>
                </></span>
-          </div><!- STAMP ENDS HERE -!>
+          </div><!- STAMP ENDS HERE -!>  
       </div>
+	  {% else %}
+	  <div style="margin-top: -60px">
+	  </div>
+	  {% endif %}
+	  
       <!- MSG ENDS HERE -!>
 
     </div>
