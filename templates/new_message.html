@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block scripts %}
+<script type="text/javascript" src="{% static 'js/menuHighLight.js' %}"></script>
+{% endblock %}
+
+{% block content %}    
+
+      <h1 id="top_banner" style="margin-bottom: 20px;">Composing new message</h1>
+
+   <div id="new_message">
+   <form action="/messages/send/" method ="POST">
+     {{ form.body }}
+     <div style="clear: both">
+      <p style="float: left; margin-right: 20px;">Recipient: </p> {{ form.recipient }}  
+</select> 
+     {% csrf_token %}
+	 <br><br>
+     <button id="comment_submit_btn" style="float: right;" class="btn" title="A comment is required to post" input type="submit" class='button'>SEND MESSAGE</button>
+	 </form>
+     </div>
+    </div>
+{% endblock %}

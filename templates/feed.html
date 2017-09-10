@@ -5,95 +5,121 @@
 <script type="text/javascript" src="{% static 'js/menuHighLight.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/quick_comment.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/char_counter.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/fade_effects.js' %}"></script>
 {% endblock %}
 
 {% block content %}    
 
     <div id="welcome">
-      <h2 id="top_banner">Viewing feed</h2>
+      <h1 id="top_banner">Viewing feed</h>
 </div>
     <!- WELCOME ENDS HERE -!>
 
-<div id="feed_banner"> 
-	<div id="feed_title">
-	<h2 class="red" style="float: left">Submit a new feed entry (<span id="counter">0</span> / 420)</h2>
-	</div>
+<div id="banner"> 
+    <div id="title">
+    <h2 class="red" >Submit a new feed entry (<span id="counter">0</span> / 420)</h2>
+    </div>
 
-	{% if form.errors %}
-	<div id="feed_error">{# error message gets inserted here #}
-	<script>feed_error_fade();</script>
-	</div>
-	{% endif %}
 	
-	<!-- {% if not form.errors %}	
-	<div id="feed_error">{# success message gets inserted here #}
-	<script>feed_success_fade();</script>
-	</div>
-	{% endif %}
-	 -->
-	 
-	<div id = "feed_entry"> 
-<form action="/feed/" method="post">
+    {% if form.errors %}
+    <div id="message">{# error message gets inserted here #}
+	<script>feed_error_fade();</script>
+	    	
+    </div>
+    {% endif %}
+	
+	{% if cmt_form.errors %}
+    <div id="message">{# error message gets inserted here #}
+    </div>
+    {% endif %}
+	
+	{% if success %}
+    <div id="message>{# error message gets inserted here #}
+    <script>feed_success_fade();</script>
+    </div>
+    {% endif %}
+	
+    {% if cmt_success %}
+    <div id="message">{# error message gets inserted here #}
+    <script>comment_success_fade();</script>
+    </div>
+    {% endif %}
+	 </div>
+ 
+    <div class="message_margin_fixer"></div>
+ 
+    <div id = "feed_entry"> 
+<form action="/feed/" method="post" style="clear: both;">
 
-
-<div id="feed_entry_input">
-<form action="/feed" method ="POST">  
   {{ form.as_table }}
   </div>
   <div id="feed_entry_submit">
   {% csrf_token %}
 <button id="feed_entry_submit_btn" class="btn" title="A message is required to post" input type="submit" class='button'>POST</button>
 </form>
-
-
-
-</div>
-
 </div> <!- FEED ENTRY ENDS HERE -!>
-	
+    
 <div id="feed">
-<br>
 
+{% if entries %}
+
+   <h2>Latest feed entries</h2>
+
+{% endif %}   
+   
 {% for entry in entries %}
-      <div id="msg" class="msg_border">
-	    
-        <h3>{{ entry.author.username }} wrote:</h3>
-        <p>{{ entry.body | linebreaks }}</p>
 
-          <div id="stamp">
-
-            
-             <span style="float: left; ">
+      <div id="entry" style="clear: both">
+     
+        <h3><strong>{{ entry.author.username }} wrote:</strong></h3>
+        <p>{{ entry.body }}</p>
+        <span style="float: left; ">
                Posted on: {{ entry.publish_date }}</span>
 
-             <span style="float: right;">
+        <div class="stamp">
+        
+        <span style="float: right;">
            
               <a href="/feed/{{ entry.id }}">View post</a>
-              <a id="toggle" onclick="quick_comment_toggle(entry_{{ entry.id }});" style="cursor: pointer">Comment post {% if entry.comments.count != 0 %}({{ entry.comments.count }}){% endif %}</a>
+              <a id="toggle" onclick="quick_comment_toggle(entry_{{ entry.id }});" style="cursor: pointer">Comment {% if entry.comments.count != 0 %}({{ entry.comments.count }}){% endif %}</a>
               <a href="default.asp">Message user</a>
               <a href="default.asp">Go to user profile</a>
-               </></span>
-          </div><!- STAMP ENDS HERE -!>
-		  
-		  <div id="entry_{{ entry.id }}" class="hide" style="margin-top: 60px; margin-bottom: -20px">
-		  <form method="POST" action={% url 'quick_comment_feed' id=entry.id %}>
+        </span>
+        </div>
+        
+              <div class="mobile_stamp">        
+      <div class="stamp_top">
+        <span style="float: left;">
+              <a href="/feed/{{ entry.id }}">View post</a></span>
+          <span style="float: right;"> 
+            <a id="toggle" onclick="quick_comment_toggle(entry_{{ entry.id }});" style="cursor: pointer">Comment {% if entry.comments.count != 0 %}({{ entry.comments.count }}){% endif %}</a>
+         </div><br><br><br>
+               <div class="stamp_bottom">
+          <span style="float: left;">
+            <a href="default.asp">Message user</a></span>
+          <span style="float: right;">
+              <a href="default.asp">Go to user profile</a>
+      </span></div>
+              </div>
+        
+      </div>
+          
+          <div id="entry_{{ entry.id }}" class="hide" style="margin-top: 60px; margin-bottom: -20px">
+          <form method="POST" action={% url 'quick_comment_feed' id=entry.id %}>
   {{ cmt_form.as_table }}
   
   {% csrf_token %}
 
-<button id="comment_submit_btn" style="float: right; margin-top: 40px; margin-bottom: -90px" class="btn" title="A comment is required to post" input type="submit" class='button'>ADD COMMENT</button>
+<button id="comment_submit_btn" style="float: right;" class="btn" title="A comment is required to post" input type="submit" class='button'>ADD COMMENT</button>
 </form></div>
-		  
-      </div>
-	  
-      <!- MSG ENDS HERE -!>
-{% empty %}	  
+   
+{% empty %}      
 
-<div id="feed_empty" style="margin-top: 90px">
+<div id="feed_empty">
 <center><h3>No feed entries yet :(</h3></center>
 </div>
-	  
+      
 {% endfor %}
     </div><!- FEED ENDS HERE -!>
-	<br><br><br>
+    <br><br><br>
 {% endblock %}

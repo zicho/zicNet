@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block scripts %}
+<script type="text/javascript" src="{% static 'js/menuHighLight.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+  <div id="content">
+
+  
+  <div id = "inbox_wrapper">
+  <h2 id="top_banner">Viewing inbox</h2>
+  <div id="messages">
+    <h2 class="red">Viewing message</h2>
+    <div id="comment">
+<p style="float:left"><strong>From: {{ active_message.sender }}</strong></p>
+     <p class="gray" style="float: right">{{ active_message.send_date }}</p>
+      
+<p style="margin: 0px; clear: both;">{{ active_message.body }}</p><br>
+
+</div>
+</div>
+
+   <div id="new_message">
+     <h2 class="red">Inbox</h2>
+      
+{% for message in messages %}	
+
+     <div id="inbox_item">
+	 <a href="/messages/{{ message.id }}">
+     <p style="float:left"><strong>From: {{ message.sender }}</strong></p>
+     <p class="gray" style="float: right">{{ message.send_date }}</p>
+     <p style="clear: both;">{{ message.body|truncatechars:50 }}</p>
+     </a>
+	 <hr \>
+     </div>
+     
+{% empty %}
+
+<h3 style="margin-top: -10px">No messages for this user.</h3>	 
+	 
+{% endfor %}    
+	 
+     </div>
+    </div>
+
+                  <div id="stamp">
+      
+             <span style="float: left; margin-left: -30px;">
+            <p>
+              <a href="">View your sent messages</a>
+              <a href="/messages/new">Compose new message</a>
+              </p></span>
+          </div><!- STAMP ENDS HERE -!>
+    
+</div>
+
+{% endblock %}

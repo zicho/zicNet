@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block scripts %}
+<script type="text/javascript" src="{% static 'js/menuHighLight.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+
+  
+{% if messages %}
+    <h1 id="top_banner">Messages</h2>
+	
+	<div class="column column_left" style="word-wrap: break-word; margin-bottom: -32px;">
+    <h2 class="red">Viewing message</h2>
+<p style="float:left"><strong>From: {{ active_message.sender }}</strong></p>
+     <p class="gray" style="float: right">{{ active_message.send_date }}</p>
+      
+<p style="clear: both;">{{ active_message.body }}</p><br>
+</div>
+
+
+
+	<div class="column">
+	      <h2 class="red">Inbox</h2>
+{% for message in messages %}	
+
+
+	 <a href="/messages/{{ message.id }}">
+     <p class="black" style="float:left"><strong>{% if message.unread %}<span class="red">(NEW) </span>{% endif %} From: {{ message.sender }}</strong></p>
+     <p class="gray" style="float: right">{{ message.send_date }}</p>
+     <p class="black" style="clear: both;">{{ message.body|truncatechars:45 }}</p>
+     </a>
+	 <hr style="margin-bottom: 0"\>
+	 
+{% endfor %}
+
+                  <div class="stamp" style="margin-top: 8px">
+      
+             <span style="float: right"> 
+            
+              <a href="default.asp">View your sent messages</a>
+              <a href="/messages/new">Compose new message</a>
+              </span>
+          </div><!- STAMP ENDS HERE -!>
+		  
+<ul class="paginator">
+{% if messages.has_other_pages %}
+
+{% if messages.has_previous %}
+	<li style="float: left;"><a href="?page={{ messages.previous_page_number }}">&laquo;</a></li>
+{% endif %}
+
+{% for i in messages.paginator.page_range %}
+	{% if messages.number == i %}
+	<li class="paginator_item active"><a>{{ i }}</a></li>
+	{% else %}
+	<li style="float: left;"><a href="?page={{ i }}">{{ i }}</a></li>
+	{% endif %}
+{% endfor %}
+
+{% if messages.has_next %}
+	<li style="float: left;"><a href="?page={{ messages.next_page_number }}">&raquo;</a></li>
+{% endif %}
+	
+{% endif %}
+</ul> 
+		  
+		  </div>
+{% else %}
+
+<center><h3 style="margin-top: 80px">You have not received any messages yet :(<br \>Why don't you <a style="font-size: 100%; font-family: 'Roboto Condensed';" href="/messages/new/">send one</a> instead?</h3></center>
+
+{% endif %}
+		 
+
+{% endblock %}

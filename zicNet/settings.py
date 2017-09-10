@@ -24,8 +24,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '027y-lfg6j3b0zqpvak&#7c7x8467_1*8y4)23)^p&nq25n*8m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = False
 
+#ALLOWED_HOSTS = ['192.168.10.157']
 ALLOWED_HOSTS = ['192.168.10.157', 'zicho.dlinkddns.com']
 
 
@@ -67,6 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+				'users.context_processors.unread_messages_check',
             ],
         },
     },

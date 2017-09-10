@@ -18,19 +18,19 @@
   <div id="login">
     
     <h1 style="font-size: 600%"><span class="red">zic</span>Net</h1>
-      <p style="margin-top: -48px">Welcome to <span class="red">zic</span>Net.<br>To enter, input user credentials below.
+      <p >Welcome to <span class="red">zic</span>Net.<br>To enter, input user credentials below.</p>
         
         <div id="login_form">
           
 <form action="/login/" method ="POST">  
-    <label for="username"><p  style="margin-bottom: 2px">Username</p></label>
+    <label for="username"><p>Username</p></label>
     <input type="text" id="username" name="username">
 
-    <label for="password"><p style="margin-bottom: 2px">Password</p></label>
+    <label for="password"><p>Password</p></label>
     <input type="password" id="password" name="password">
   <br><br>
   {% csrf_token %}
-          <input id="login_btn" class="btn" type="submit" value="ENTER">
+          <input id="login_btn" class="btn" type="submit" value="ENTER" style="width: 40%;">
 </form>
 
 </div><!- FORM ENDS HERE -!>
@@ -40,14 +40,19 @@
 
   
     <div style="position: absolute; left: 50%;">
-    <div id="error" style="position: relative; left: -50%;">
+	{% if login_fail %}
+    <div id="login_error" style="position: relative; left: -50%;">
+	    
+    <script type="text/javascript">login_error_fade();</script>
+
     </div>
+	{% endif %}
   </div>
   
   
   
   <br><br><br>
-  <div style="position: relative; margin: auto"><a class="fadein" href="default.asp">Not a member? Request account here.</a></div>
+  <div style="position: relative; margin: auto"><a class="fadein" href="/account_request">Not a member? Request account here.</a></div>
 
 </body>
 </html>

@@ -1,75 +1,104 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block scripts %}
+<script type="text/javascript" src="{% static 'js/quick_comment.js' %}"></script>
+{% endblock %}
 
 {% block content %}    
-    <div id="welcome">
-      <h2 id="top_banner">Welcome!</h2>
-      <p>This is a mockup design of a planned social platform . It is mainly designed to be a platform used for a small amount of people (e.g. a group of friends) to help organize contact and planning. The idea is that people in your friend list can post
-        to a shared feed, and that all friends of the poster can see and comment the messages added to the feed. </p>
-    </div>
-    <!- WELCOME ENDS HERE -!>
-    {% if entry %}
-	<div id="feed">
-      <h2 class="red" style="margin-bottom: -50px;">Latest entry from feed</h2>
-      <div id="msg">
-	  
-        <h3>{{ entry.author.username }} wrote:</h3>
+          <div>
+        <h1>Welcome to <span class="red">zic</span>Net!</h1>
+        <p>This is a mockup of a new and better design for zicNet. It may look the kinda same but the <span class="red">CSS</span> is toally reworked and is now mobile responsive. Try it out!</p>
+      </div>
+      {% if entry %}
+
+	        <div id="entry" style="clear: both">
+     
+        <h3><strong>{{ entry.author.username }} wrote:</strong></h3>
         <p>{{ entry.body }}</p>
-
-          <div id="stamp">
-
-            
-             <span style="float: left; ">
+        <span style="float: left; ">
                Posted on: {{ entry.publish_date }}</span>
 
-             <span style="float: right;">
+        <div class="stamp">
+        
+        <span style="float: right;">
            
-              <a href="default.asp">View post</a>
-              <a href="default.asp">Comment post</a>
+              <a href="/feed/{{ entry.id }}">View post</a>
+              <a id="toggle" onclick="quick_comment_toggle(entry_{{ entry.id }});" style="cursor: pointer">Comment {% if entry.comments.count != 0 %}({{ entry.comments.count }}){% endif %}</a>
               <a href="default.asp">Message user</a>
               <a href="default.asp">Go to user profile</a>
-               </></span>
-          </div><!- STAMP ENDS HERE -!>  
+        </span>
+        </div>
+        
+              <div class="mobile_stamp">        
+      <div class="stamp_top">
+        <span style="float: left;">
+              <a href="/feed/{{ entry.id }}">View post</a></span>
+          <span style="float: right;"> 
+            <a id="toggle" onclick="quick_comment_toggle(entry_{{ entry.id }});" style="cursor: pointer">Comment {% if entry.comments.count != 0 %}({{ entry.comments.count }}){% endif %}</a>
+         </div><br><br><br>
+               <div class="stamp_bottom">
+          <span style="float: left;">
+            <a href="default.asp">Message user</a></span>
+          <span style="float: right;">
+              <a href="default.asp">Go to user profile</a>
+      </span></div>
+              </div>
+        
       </div>
-	  {% else %}
-	  <div style="margin-top: -60px">
-	  </div>
-	  {% endif %}
+          
+          <div id="entry_{{ entry.id }}" class="hide" style="margin-top: 60px; margin-bottom: -20px">
+          <form method="POST" action={% url 'quick_comment_feed' id=entry.id %}>
+  {{ cmt_form.as_table }}
+  
+  {% csrf_token %}
+
+<button id="comment_submit_btn" style="float: right;" class="btn" title="A comment is required to post" input type="submit" class='button'>ADD COMMENT</button>
+</form></div>
 	  
-      <!- MSG ENDS HERE -!>
-
-    </div>
-    <!- FEED ENDS HERE -!>
-    <br><br><br>
 <hr>
-    <div id="events">
+{% endif %}
+      
+            <div id="event">
+        <h2>Latest event</h2>
+              <span style="float: left;">
+              <h3 class="black"><strong>Party!</strong></h3> 
+              </span>
+              
+              <span style="float: right;">
+              <h3><strong>
+Date: 05/11/2017, 19:00</strong></h3>
+              </span>
+			  
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi quis porttitor ipsum. Fusce in felis at erat maximus feugiat. Class aptent taciti sociosqu ad litora torquent per conubia nostra</p>
+        <span style="float: left; ">
+               Created 05/08/2017 by zicho</span>
 
-      <h2 class="red">Latest event</h2>
-      <div id="event">
-            <br><br>
-             <span style="float: left;">
-               <h3>Party!</h3></span>
-
-             <span style="float: right;">
-            <h3 class="gray">
-              Date: 05 / 08 / 2017, 19:00
-            </h3></span>
-        <p style="clear: both">A party is a gathering of people who have been invited by a host for the purposes of socializing, conversation, recreation, or as part of a festival or other commemoration of a special occasion. A party will typically feature food and beverages, and often music and dancing or other forms of entertainment. In many Western countries, parties for teens and adults are associated with drinking alcohol such as beer, wine or distilled spirits.</p>
-        
-                  <div id="stamp" style="margin-top: -40px">
-
-            <br><br>
-             <span style="float: left;">
-               <p>Created 26-07-2017 15:11 by <span class="black">zicho</span></p></span>
-
-             <span style="float: right;">
-            <p>
+        <div class="stamp">
+        <span style="float: right;">
+           
               <a href="default.asp">View event</a>
-              <a href="default.asp">Comment event</a>
+              <a href="default.asp">Comment</a>
               <a href="default.asp">Message user</a>
               <a href="default.asp">Go to user profile</a>
-               </p></span>
-          </div><!- STAMP ENDS HERE -!>
-        
-          </div><!- SPECIFIC EVENT END HERE -!>
-      </div><!- EVENTS END HERE -!>
+        </span>
+              </div>  
+              
+      <div class="mobile_stamp">        
+      <div class="stamp_top">
+        <span style="float: left;">
+              <a href="default.asp">View event</a></span>
+          <span style="float: right;"> 
+            <a href="default.asp">Comment</a></span>
+         </div><br><br><br>
+               <div class="stamp_bottom">
+          <span style="float: left;">
+            <a href="default.asp">Message user</a></span>
+          <span style="float: right;">
+              <a href="default.asp">Go to user profile</a>
+      </span></div>
+              </div>
+
+      </div>
+      <!- EVENT ENDS HERE -!>
 {% endblock %}	  

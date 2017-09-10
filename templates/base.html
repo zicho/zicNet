@@ -2,67 +2,66 @@
 {% load static %}
 
 <html>
-<body>
-
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed|Raleway" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  <script>var js_data = {{ js_data }}</script>
+  <script type="text/javascript" src="{% static 'js/responsive.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/infobar.js' %}"></script>
 </head>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="{% static 'js/fade_effects.js' %}"></script>
 
 {% block scripts %}
 {# template specific scripts can be added within this block #}
 {% endblock %}
 
 {% endblock %}
+{% block container %}
+<div id="container">
 {% block menu %}
-<div id="main">
-  <div id="menu">
-    <h1><a id="logo" href="/"><span class="red logo">zic</span>Net</h1></a>
-    
-    <a id="menu_logout" id="exit" href="/logout">
-    <i class="fa fa-external-link gray"></i>
-      Log Out</a>
-    
-    <a  id="menu_friends" href="default.asp">
-    <i class="fa fa-address-book gray"></i>Friends</a>
-    
-    <a  id="menu_events" href="default.asp">
-    <i class="fa fa-calendar gray"></i>Events</a>
-    
-    <a  id="menu_inbox" href="default.asp">
-    <i class="fa fa-envelope-o gray"></i>Inbox</a>
-    
-    <a  id="menu_profile" href="/profile">
-    <i class="fa fa-male gray"></i>Profile</a>
-    
-    <a id="menu_feed" href="/feed">
-    <i class="fa fa-list gray"></i>Feed</a>
-    
-    <hr style="clear: both;">
+<div id="header">
+      <div id="logo">
+        <h2 class="znet-banner"><a title="Go to front page" href="/"><span class="red">zic</span>Net</a></h2>
+      </div>
+      <!- END OV LOGO -!>
+      <div id="menu">
+        <nav id="menu_nav">
+          <ul id="menu_main">
 
-    <span id="info_feed" style="float: left;">View latest <span class="red" style="font-size: 100%">feed</span> entries</span>
-    
-    <span id="info_profile" style="float: left;">View your <span class="red" style="font-size: 100%">profile</span></span>
-    
-    <span id="info_inbox" style="float: left;">View your <span class="red" style="font-size: 100%">messages</span></span>
-    
-    <span id="info_events" style="float: left;">View upcoming <span class="red" style="font-size: 100%">events</span></span>
-    
-    <span id="info_friends" style="float: left;">View <span class="red" style="font-size: 100%">friend</span> list</span>
-    
-    <span id="info_logout" style="float: left;">Leave this place</span>
-    
-    <span style="float: right;">Logged in as: <span class="red" style="font-size: 100%">{{ user.get_username }}</span></span>
-   
-  </div>
-  <!- MENU ENDS HERE -!>
-  
-  <hr style="clear: both;">
+            <li id="menu_logout" style="float:right"><a href="/logout"><i class="fa fa-external-link"></i>Log Out</a></li>
+
+            <li id="menu_friends" style="float:right"><a href="#home"><i class="fa fa-address-book"></i>Friends</a></li>
+
+            <li id="menu_events" style="float:right"><a href="#profile"><i class="fa fa-calendar"></i>Events</a></li>
+
+            <li id="menu_messages" style="float:right"><a href="/messages"><i class="fa fa-envelope-o"></i>Messages</a></li>
+
+			{% if unread_messages %}
+			<script type="text/javascript" src="{% static 'js/unread_hilight.js' %}"></script>
+			{% endif %}
+			
+            <li id="menu_profile" style="float:right"><a href="/profile"><i class="fa fa-male black"></i>Profile</a></li>
+
+            <li id="menu_feed" style="float:right"><a href="/feed"><i class="fa fa-list"></i>Feed</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!- END OV MENU -!>
+      
+      <div id="infostrip">
+      <hr id="infobar-top">  
+
+        <span id="info_bar" class="hide" style="float: left;"></span>
+
+        <span id="infobar_userinfo">Logged in as: <span class="red" style="font-size: 100%">{{ user.get_username }}</span></span>
+        <hr id="infobar-bottom">
+      </div>
+      <!- END OF INFOBAR -!>
+    </div>
+    <!- END OV HEADER -!>
 {% endblock %}
   
 <div id="content"> {# universal content div starts here #}
@@ -73,7 +72,10 @@
 </div><!- CONTENT ENDS HERE -!>
 {% endblock %} {# universal content div ENDS here #}
 
-</div><!- MAIN ENDS HERE -!>
-
-</html>
+</div><!- CONTAINER ENDS HERE -!>
 </body>
+</html>
+{% endblock %} {# container div ENDS here #}
+
+
+

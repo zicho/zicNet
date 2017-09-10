@@ -1,0 +1,10 @@
+from django.contrib.auth.models import User
+users = User.objects.all()
+
+u1 = User.objects.get(id=1)
+
+for x in users:
+    private_message.objects.create(body='Välkommen tillbaka!', sender=u1, recipient=x, unread=True)
+
+
+

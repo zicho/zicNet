@@ -19,12 +19,26 @@ from zicNet.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-	url(r'^$', index),
-	url(r'^login/$', login_user),
-	url(r'^logout/$', logout_user),
+    url(r'^$', index),
+    url(r'^login/$', login_user),
+    url(r'^logout/$', logout_user),
+	
+	url(r'^account_request/$', account_request),
+	
+    url(r'^password_change/$', password_change, name='password_change'),
+    
 	url(r'^feed/$', feed),
-	url(r'^feed/(?P<id>[0-9]+)/$', comment_feed, name='comment_feed'),
-	url(r'^feed/comment/(?P<id>[0-9]+)/$', quick_comment_feed, name='quick_comment_feed'),
-	url(r'^profile/', profile),
-    url(r'^search/', search),
+    url(r'^feed/(?P<id>[0-9]+)/$', comment_feed, name='comment_feed'),
+	
+    url(r'^feed/comment/(?P<id>[0-9]+)/$', quick_comment_feed, name='quick_comment_feed'),
+	
+    url(r'^profile/', profile),
+	
+	url(r'^messages/$', messages, name='messages'),
+	url(r'^messages/new/$', new_message),
+	url(r'^messages/send/$', send_message),
+	
+    url(r'^messages/(?P<id>[0-9]+)/$', view_message),
+	
+    #url(r'^search/', search),
 ]

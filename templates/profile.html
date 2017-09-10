@@ -7,41 +7,53 @@
 
 {% block content %}    
 
-<div id="welcome">
-      <h2 id="top_banner">Viewing profile of {{ user.get_username }}</h2>
-</div>
-    <!- WELCOME ENDS HERE -!>
-    <div id="profile">
-      <div id="profile_wrapper">
-        
-        <div id="info">
+
+      <h1 id="top_banner">Viewing profile of {{ user.get_username }}</h1>
+
+
+   
+          <div class="column column_left">
           <h2 class="red">Info</h2>
         <p>
-		  {% if user_profile.info %}
+          {% if user.user_profile.info %}
           {{ user.user_profile.info }}
-		  {% else %}
-		  <span class="gray">There is no profile info available on this user.</span>
-		  {% endif %}
-          </p>
+          {% else %}
+          <span class="gray">There is no profile info available on this user.</span>
+          {% endif %}
+        </p>
         </div>
         
-        <div id="contact">
+           <div class="column">
       <h2 class="red">Contact</h2>
         <p>
           Email: <span style="float: right">{% if user.email %} {{ user.email }} {% else %} <span class="gray">N/A</span> {% endif %}</span><br>
-          XMPP/Jabber:<span style="float: right">zicho@draugr.de</span><br>
-          reddit:<span style="float: right">zicho</span>
-          </p></div><!- CONTACT ENDS HERE -!>
-      </div><!- WRAPPER ENDS HERE -!>
-                  <div id="stamp">
-      
-             <span style="float: right; margin-right: -10px;">
-            <p>
+          XMPP/Jabber: <span style="float: right">{% if user.xmpp %} {{ user.xmpp }} {% else %} <span class="gray">N/A</span> {% endif %}</span><br>
+          reddit: <span style="float: right">{% if user.reddit %} {{ user.reddit }} {% else %} <span class="gray">N/A</span> {% endif %}</span><br>
+          </p><!- CONTACT ENDS HERE -!>
+
+	    
+		<div class="stamp">
+		<span style="float: right;">
+           
               <a href="default.asp">Edit profile</a>
-              <a href="default.asp">Message user</a>
-                    <a href="default.asp">Send friend request</a>
-               </p></span>
-          </div><!- STAMP ENDS HERE -!>
+			  <a href="/password_change">Change password</a>
+        </span>
+        </div>
         
-          </div><!- PROFILE ENDS HERE -!>
+              <div class="mobile_stamp">        
+      <div class="stamp_top">
+        <span style="float: left;">
+              <a href="default.asp">View event</a></span>
+          <span style="float: right;"> 
+            <a href="default.asp">Comment</a></span>
+         </div><br><br><br>
+               <div class="stamp_bottom">
+          <span style="float: left;">
+            <a href="default.asp">Message user</a></span>
+          <span style="float: right;">
+              <a href="default.asp">Go to user profile</a>
+      </span></div>
+              </div>
+
+		  </div>
 {% endblock %}

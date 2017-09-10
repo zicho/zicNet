@@ -3,63 +3,57 @@
 
 {% block scripts %}
 <script type="text/javascript" src="{% static 'js/menuHighLight.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/fade_effects.js' %}"></script>
 {% endblock %}
 
 {% block content %}    
 
-    <div id="welcome" style="margin-bottom: -140px">
-      <h2 id="top_banner">Viewing feed entry</h2>
-</div>
-    <!- WELCOME ENDS HERE -!>
-	
-	<div id = "feed_entry"> 
-
-<br>
-
-      <div id="comment">
-	    
-		<div id="feed_banner">
-	    <div id="feed_title">
-        <h3 >{{ entry.author.username }} wrote:</h3>
+      <h1 id="top_banner">Viewing feed entry</h1>
+      
+	  
+   <div id="entry" style="clear: both">
+        <div id="banner">
+		<div id="title">
+        <h3 style="margin-bottom: 8px"><strong>{{ entry.author.username }} wrote:</strong></h3>
 		</div>
+		
 		{% if form.errors %}
-		<div id="comment_error" style="float: right; margin-top: -50px;">
-	    
-		{# error message gets inserted here #}
-	    <script>comment_error_fade();</script>
+    <div id="message">{# error message gets inserted here #}
+	<script>comment_error_fade();</script>
+	    	
+    </div>
+    {% endif %}
+	
+	{% if success %}
+    <div id="message">{# error message gets inserted here #}
+    <script>comment_success_fade();</script>
+    </div>
+    {% endif %}
 		</div>
-		{% endif %}
-		
-		<!-- 
-		{% if not form.errors %}
-		<div id="comment_error" style="float: right; margin-top: -50px;">
-	    
-		{# success message gets inserted here #}
-	    <script>comment_success_fade();</script>
-		{% endif %} -->
-		
-		
-			</div>
-		
-        <p style="clear: both;">{{ entry.body|linebreaks }}</p>
-
-          <div id="stamp" style="margin-bottom: 0px;">
-
-            
-             <span style="float: left; margin-bottom: 40px">
+        <p>{{ entry.body }}</p>
+        <span style="float: left; margin-bottom: 8px">
                Posted on: {{ entry.publish_date }}</span>
 
-             <span style="float: right;">
-           
-              <a href="default.asp">Message user</a>
+        <div class="stamp">
+        
+        <span style="float: right;">
+           <a href="default.asp">Message user</a>
               <a href="default.asp">Go to user profile</a>
-               </></span>
-          </div><!- STAMP ENDS HERE -!>
+        </span>
+        </div>
+        
+              <div class="mobile_stamp">        
+<br>
+               <div class="stamp_bottom">
+          <span style="float: left;">
+            <a href="default.asp">Message user</a></span>
+          <span style="float: right;">
+              <a href="default.asp">Go to user profile</a>
+      </span></div>
+              </div>
+        
       </div>
 	  
-      <!- MSG ENDS HERE -!>
-	  
-
 <div id="comment_submit">	  
 <form method="POST" action={% url 'comment_feed' id=entry.id %}>
   
@@ -68,27 +62,33 @@
   
   {% csrf_token %}
 
-<button id="comment_submit_btn" class="btn" title="A comment is required to post" input type="submit" class='button'>POST</button>
+<button style="display: block; float: right" id="comment_submit_btn" class="btn" title="A comment is required to post" input type="submit" class='button'>ADD COMMENT</button>
 </form>
-
 </div>
 
-</div><!- FEED ENDS HERE -!>
+{% if comments %}
 
-<div id="comments">
+<h2 style="margin: 60px 0px 12px 0px">Comments</h2>
+
+{% endif %}
 
 {% for comment in comments %}
 
-<div id="comment" class="msg_border" style="margin-top: 80px; margin-bottom: -60px">
-<p style="margin: 0px 0px -20px 0px;"><strong>{{ comment.author.username }}:</strong></p><br>
-<p style="margin: 0px">{{ comment.body|linebreaks  }}</p><br>
-<p class="gray" style="margin: -20px 0px 0px 0px;">{{ comment.publish_date }}</p>
-
+<div id="comment">
+<div id="banner">
+<div id="title">
+<p><strong>{{ comment.author.username }}:</strong></p></div>
+<div id="message">
+<p class="gray">{{ comment.publish_date }}</p></div>
+</div>
+<div style="clear: both; margin-top: 30px; margin-bottom: 10px;">
+<p>{{ comment.body|linebreaks }}</p>
+</div>
 </div>
 
 
 {% empty %}
-<div style="margin-top: 120px">
+<div style="margin-top: 90px">
 <center><h2>No comments yet!</h2></center>
 </div>
 {% endfor %}
